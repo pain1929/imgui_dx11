@@ -113,18 +113,11 @@ void create() {
 }
 
 
-struct Thread {
-	std::thread t;
-	~Thread() { if (t.joinable()) { t.join(); } }
-};
-
-
-static Thread g_thread;
 
 static BOOL __stdcall DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved) {
 	
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-		g_thread.t = std::move(std::thread(create));
+		CreateThread(NULL ,0, create , NULL , 0 , NULL );
 	}
 
     return TRUE;
