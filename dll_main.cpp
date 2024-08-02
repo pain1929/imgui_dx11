@@ -72,7 +72,7 @@ long __stdcall my_present(IDXGISwapChain* _this, UINT a, UINT b) {
 }
 
 
-void create() {
+DWORD create(void*) {
 	const unsigned level_count = 2;
 	D3D_FEATURE_LEVEL levels[level_count] = { D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_0 };
 	DXGI_SWAP_CHAIN_DESC sd{};
@@ -107,6 +107,8 @@ void create() {
 		g_pd3dDevice->Release();
 		g_pSwapChain->Release();
 	}
+
+	return 0;
 
 	
 
